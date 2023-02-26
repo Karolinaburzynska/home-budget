@@ -1,2 +1,5 @@
-package com.example.homebudget.api;public record ExpenseDto() {
+package com.example.homebudget.api;
+
+public record ExpenseDto() {
+
 }

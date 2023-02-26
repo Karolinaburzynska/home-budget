@@ -1,24 +1,55 @@
-package com.example.homebudget;
+package com.example.homebudget.infrastructure;
 
-import com.example.homebudget.domain.ExpensesRepository;
+import com.example.homebudget.domain.Expense;
+import com.example.homebudget.domain.ExpenseId;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class InMemoryExpenseRepository implements ExpensesRepository {
-    private final Map<String, Expense> expenseMap = new HashMap<String,Expense>();
+    private final Map<ExpenseId, Expense> expenseMap = new HashMap<ExpenseId, Expense>();
 
+
+    // save expanse
     @Override
-    public void saveExpense(Expense expense) {
-        expenseMap.put(expense.getExpenseId(), expense);
+    public Expense save(Expense expense) {
+        return expenseMap.put(expense.expenseId(), expense);
     }
 
+
+    // metoda do pobierania wydatku po id
     @Override
-    public List<Expense> getExpenses() {
+    public Optional<Expense> getExpenseByExpenseId(ExpenseId expenseId) {
+        return Optional.ofNullable(expenseMap.get(expenseId));
+    }
+
+
+    //metoda do pobierania wszystkich wydatków
+    @Override
+    public List<Expense> getAllExpenses() {
         return expenseMap.values().stream().toList();
+
     }
+
+    @Override
+    public void deleteExpenseById(ExpenseId expenseId) {
+         expenseMap.remove(expenseId);
+    }
+
+    @Override
+    public void deleteAllExpenses() {
+        expenseMap.clear();
+
+    }
+
+    @Override
+    public Expense updateExpanse(ExpenseId expenseId, Expense expense ) {
+        expenseMap.replace(expenseId,expense);
+        return expenseMap.get(expenseId);
+    }
+
+
+
+
 }

@@ -1,5 +1,6 @@
-package com.example.homebudget.api.request;
+package com.example.homebudget.api.expanse.request;
 
+import com.example.homebudget.domain.budget.BudgetId;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
@@ -13,8 +14,8 @@ public record RegisterExpenseRequest(
         String title,
         @Positive
         BigDecimal amount,
-        @DateTimeFormat(style = "DD-MM-YYYY")
-        LocalDateTime date) {
+        LocalDateTime date,
+        String budgetId) {
 
 
     // record created to make object come from outside

@@ -1,6 +1,7 @@
-package com.example.homebudget.api.response;
+package com.example.homebudget.api.expanse.response;
 
-import com.example.homebudget.domain.Expense;
+import com.example.homebudget.domain.budget.BudgetId;
+import com.example.homebudget.domain.expanse.Expense;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -8,7 +9,8 @@ import java.time.LocalDateTime;
 public record ExpenseResponseDto(String expenseId,
                                  BigDecimal amount,
                                  String title,
-                                 LocalDateTime date) {
+                                 LocalDateTime date,
+                                 BudgetId budgetId) {
 
 
     public static ExpenseResponseDto fromDomain(Expense expense) {
@@ -16,7 +18,8 @@ public record ExpenseResponseDto(String expenseId,
                 expense.expenseId().value(),
                 expense.amount(),
                 expense.title(),
-                expense.date()
+                expense.date(),
+                expense.budgetId()
         );
     }
 }

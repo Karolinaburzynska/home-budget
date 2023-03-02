@@ -1,0 +1,4 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://kburzynska1:Karolina1@homebudget.ziwsasi.mongodb.net/homeBudget?retryWrites=true&w=majority

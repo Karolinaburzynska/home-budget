@@ -1,6 +1,6 @@
-package com.example.homebudget.infrastructure;
+package com.example.homebudget.infrastructure.expanse;
 
-import com.example.homebudget.domain.ExpenseId;
+import com.example.homebudget.domain.expanse.ExpenseId;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

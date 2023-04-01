@@ -1,7 +1,9 @@
 package com.example.homebudget.domain.budgets;
 
-import java.math.BigDecimal;
+import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+@Component
 public class NormalBudgetValidationStrategy implements BudgetValidationStrategy{
     @Override
     public boolean supports(BudgetType budgetType) {
